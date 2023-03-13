@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backround2"
+        android:padding="10dp"
+        tools:context=".ui.moviedetail.aboutmovie.AboutMovieFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="8.5"
+            android:textColor="#ffc107"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv"
+            app:layout_constraintStart_toEndOf="@+id/tv"
+            app:layout_constraintTop_toTopOf="@+id/tv"
+            app:srcCompat="@drawable/star_full" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/synopsis"
+            style="@style/PoppinsRegular1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Synopsis"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView4"
+            style="@style/PoppinsRegular1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/synopsis"
+            app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

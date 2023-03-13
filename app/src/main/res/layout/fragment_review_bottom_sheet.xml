@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dto"
+            type="com.example.moviesapp.data.model.dto.moviedetaildto.MovieReviewsDto" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backround">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/iwStar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/line" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iw_profile"
+                android:layout_width="@dimen/_46sdp"
+                android:layout_height="@dimen/_46sdp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setAvatar="@{dto.avatarPath}"
+                app:shapeAppearanceOverlay="@style/CircleImageView"
+                app:strokeColor="@android:color/transparent"
+                app:strokeWidth="1dp"
+                tools:srcCompat="@drawable/icon_person" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_profileName"
+                style="@style/PoppinsTextStyle"
+                android:layout_width="0dp"
+                android:layout_marginStart="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toStartOf="@id/iwStar"
+                app:layout_constraintStart_toEndOf="@id/iw_profile"
+                app:layout_constraintTop_toTopOf="@id/iw_profile"
+                tools:text="@{dto.author}" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iwStar"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                app:layout_constraintEnd_toStartOf="@id/tv_rate"
+                app:layout_constraintStart_toEndOf="@+id/tv_profileName"
+                app:layout_constraintTop_toTopOf="@id/iw_profile" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_rate"
+                style="@style/PoppinsTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="@id/iwStar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iwStar"
+                app:layout_constraintTop_toTopOf="@id/iwStar"
+                tools:text="8.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
+                style="@style/PoppinsTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintBottom_toBottomOf="@id/iw_profile"
+                app:layout_constraintStart_toEndOf="@id/iw_profile"
+                tools:text="@{dto.createdAt}" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_review"
+                style="@style/PoppinsRegular1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:enabled="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:nestedScrollingEnabled="true"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                tools:text="@{dto.comment}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MoviesApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/backround</item>
+
+        <item name="android:navigationBarColor">@color/backround</item>
+        <!-- Customize your theme here. -->
+
+        <!--Remove Toolbar-->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="RemoveAlertDialog" parent="@style/Theme.MaterialComponents.Dialog.Alert">
+        <item name="dialogCornerRadius">10sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/backround</item>
+    </style>
+
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="PoppinsTextStyle">
+        <item name="android:fontFamily">@font/poppins_black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardBackgroundColor">@color/backround</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="strokeColor">@color/grey</item>
+    </style>
+
+    <style name="GilroyBoldStyle">
+        <item name="android:fontFamily">@font/gilroy_bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">#ffc107</item>
+    </style>
+
+    <style name="PoppinsRegular1">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="PoppinsRegular2">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="dialogCornerRadius">@dimen/_12ssp</item>
+        <item name="android:indeterminateTint">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/progressbar_bg</item>
+    </style>
+
+</resources>

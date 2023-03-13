@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_nav"
+    app:startDestination="@id/homePageFragment">
+
+    <action
+        android:id="@+id/action_detailFragment_to_personDetails"
+        app:destination="@id/personDetails"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_nowPlayingFragment_to_Details"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_upcomingFragment_to_Details"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_topratedFragment_to_Details"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_popularFragment_to_Details"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_watchListFragment_to_Details"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/slide_left"
+        app:exitAnim="@anim/wait_anim"
+        app:popEnterAnim="@anim/wait_anim"
+        app:popExitAnim="@anim/slide_right" />
+
+    <action
+        android:id="@+id/action_reviewsFragment_to_reviewBottomSheet"
+        app:destination="@id/reviewBottomSheet" />
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.moviesapp.ui.homepage.HomePageFragment"
+        android:label="HomePageFragment"
+        tools:layout="@layout/fragment_home_page" />
+
+    <fragment
+        android:id="@+id/watchListFragment"
+        android:name="com.example.moviesapp.ui.watchlist.WatchListFragment"
+        android:label="watch_list_fragment"
+        tools:layout="@layout/watch_list_fragment" />
+    <fragment
+        android:id="@+id/aboutMovieFragment"
+        android:name="com.example.moviesapp.ui.moviedetail.aboutmovie.AboutMovieFragment"
+        android:label="AboutMovieFragment"
+        tools:layout="@layout/fragment_about_movie">
+
+    </fragment>
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.example.moviesapp.ui.moviedetail.reviews.ReviewsFragment"
+        android:label="ReviewsFragment"
+        tools:layout="@layout/fragment_reviews">
+
+    </fragment>
+    <fragment
+        android:id="@+id/castFragment"
+        android:name="com.example.moviesapp.ui.moviedetail.cast.CastFragment"
+        android:label="CastFragment"
+        tools:layout="@layout/fragment_cast" />
+    <fragment
+        android:id="@+id/personDetails"
+        android:name="com.example.moviesapp.ui.moviedetail.cast.persondetails.PersonDetails"
+        android:label="PersonDetails"
+        tools:layout="@layout/fragment_person_details">
+        <argument
+            android:name="castDto"
+            app:argType="com.example.moviesapp.data.model.dto.moviedetaildto.MovieCastDto"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.moviesapp.ui.moviedetail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_movies_detail2">
+        <argument
+            android:name="dtoNP"
+            app:argType="com.example.moviesapp.data.model.dto.homepagedto.NowPlayingDto"
+            app:nullable="true" />
+        <argument
+            android:name="upcomingDto"
+            app:argType="com.example.moviesapp.data.model.dto.homepagedto.UpcomingDto"
+            app:nullable="true" />
+        <argument
+            android:name="topratedDto"
+            app:argType="com.example.moviesapp.data.model.dto.homepagedto.TopRatedDto"
+            app:nullable="true" />
+        <argument
+            android:name="popularDto"
+            app:argType="com.example.moviesapp.data.model.dto.homepagedto.PopularDto"
+            app:nullable="true" />
+        <argument
+            android:name="watchListModel"
+            app:argType="com.example.moviesapp.data.model.watchlist.WatchListModel"
+            app:nullable="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/reviewBottomSheet"
+        android:name="com.example.moviesapp.ui.moviedetail.reviews.ReviewBottomSheet"
+        android:label="ReviewBottomSheet"
+        tools:layout="@layout/fragment_review_bottom_sheet">
+        <argument
+            android:name="reviewsDto"
+            app:argType="com.example.moviesapp.data.model.dto.moviedetaildto.MovieReviewsDto"
+            app:nullable="true" />
+    </dialog>
+
+</navigation>

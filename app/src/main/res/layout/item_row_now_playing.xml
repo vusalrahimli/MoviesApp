@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dto"
+            type="com.example.moviesapp.data.model.dto.homepagedto.NowPlayingDto" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/MyCardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_248sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_77sdp"
+                android:layout_height="@dimen/_77sdp"
+                android:layout_marginTop="@dimen/_58sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iwPoster"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_192sdp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:setImage="@{dto.posterPath}" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iwSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_12sdp"
+                        app:checkFavorite="@{dto.isSaved}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/favorite_icon2" />
+
+
+                    <com.willy.ratingbar.ScaleRatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="@dimen/_115sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/ratingTV"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iwPoster"
+                        app:ratingForRatingBar="@{dto.rating.floatValue()}"
+                        app:srb_clearRatingEnabled="false"
+                        app:srb_clickable="false"
+                        app:srb_drawableEmpty="@drawable/star_empty"
+                        app:srb_drawableFilled="@drawable/star_full"
+                        app:srb_isIndicator="false"
+                        app:srb_minimumStars="1"
+                        app:srb_numStars="10"
+                        app:srb_scrollable="false"
+                        app:srb_starHeight="10dp"
+                        app:srb_starPadding="2dp"
+                        app:srb_starWidth="8dp"
+                        app:srb_stepSize="0.1"
+                        tools:srb_rating="6.7" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_black"
+                        android:maxLines="2"
+                        android:text="@{dto.title}"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ratingTV"
+                        style="@style/PoppinsRegular1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        android:text="@{dto.rating.toString()}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iwPoster" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

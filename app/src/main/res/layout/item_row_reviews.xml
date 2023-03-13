@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dto"
+            type="com.example.moviesapp.data.model.dto.moviedetaildto.MovieReviewsDto" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_127sdp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/backround2"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/grey"
+        app:strokeWidth="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageView2"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ellipse2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setAvatar="@{dto.avatarPath}"
+                app:shapeAppearanceOverlay="@style/CircleImageView"
+                app:srcCompat="@drawable/no_photo" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/reviewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@{dto.author}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/shapeableImageView2"
+                app:layout_constraintTop_toTopOf="@+id/shapeableImageView2" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/comment"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@{dto.comment}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="@+id/reviewName"
+                app:layout_constraintTop_toBottomOf="@+id/reviewName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
