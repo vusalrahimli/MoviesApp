@@ -12,7 +12,6 @@ See below for more information.
 
 ## Technologies
 
-### Technologies
 * Android, Kotlin
 * [The Movie Database](https://www.themoviedb.org/)
 * Retrofit
