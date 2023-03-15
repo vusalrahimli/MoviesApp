@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentPopularBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.popular.adapters.PopularAdapter
@@ -120,6 +121,7 @@ class PopularFragment : Fragment() {
 
     private val adapter by lazy {
         PopularAdapter().also {
+            binding.rvPopular.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rvPopular.adapter = it
         }
     }

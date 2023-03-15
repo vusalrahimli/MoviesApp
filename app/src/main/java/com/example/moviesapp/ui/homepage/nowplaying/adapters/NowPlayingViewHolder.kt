@@ -1,6 +1,5 @@
 package com.example.moviesapp.ui.homepage.nowplaying.adapters
 
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

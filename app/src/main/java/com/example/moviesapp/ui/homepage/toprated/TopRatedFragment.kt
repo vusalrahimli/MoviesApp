@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentTopRatedBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.toprated.adapters.TopRatedAdapter
@@ -121,6 +122,7 @@ class TopRatedFragment : Fragment() {
 
     private val adapter by lazy {
         TopRatedAdapter().also {
+            binding.rvTopRated.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rvTopRated.adapter = it
         }
     }

@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentNowPlayingBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.nowplaying.adapters.NowPlayingAdapter
 import com.example.moviesapp.util.PopUps
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -121,6 +121,7 @@ class NowPlayingFragment : Fragment() {
 
     private val adapter by lazy {
         NowPlayingAdapter().also {
+            binding.rv.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rv.adapter = it
         }
     }

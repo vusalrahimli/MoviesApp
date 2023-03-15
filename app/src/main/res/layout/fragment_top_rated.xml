@@ -27,8 +27,6 @@
             android:fitsSystemWindows="true"
             android:overScrollMode="never"
             android:splitMotionEvents="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
             tools:listitem="@layout/item_row_top_rated">
 
         </androidx.recyclerview.widget.RecyclerView>

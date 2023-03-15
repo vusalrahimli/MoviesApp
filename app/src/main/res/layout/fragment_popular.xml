@@ -26,8 +26,6 @@
             android:overScrollMode="never"
             android:splitMotionEvents="false"
             app:equalSpacing="@{10}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
             tools:listitem="@layout/item_row_popular">
 
         </androidx.recyclerview.widget.RecyclerView>
