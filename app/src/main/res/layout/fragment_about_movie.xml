@@ -23,7 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="24dp"
@@ -35,7 +34,6 @@
             app:layout_constraintTop_toTopOf="@+id/tv"
             app:srcCompat="@drawable/star_full" />
 
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/synopsis"
             style="@style/PoppinsRegular1"
@@ -43,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Synopsis"
+            android:text="@string/synopsis"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"

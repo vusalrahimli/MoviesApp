@@ -3,24 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.example.moviesapp.ui.homepage.nowplaying.NowPlayingVM" />
-
-    </data>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:onRefreshListener="@{() -> viewModel.getNowPlaying()}"
-        app:refreshing="@{viewModel.isLoading}">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
@@ -31,6 +21,8 @@
             android:overScrollMode="never"
             android:splitMotionEvents="false"
             app:equalSpacing="@{10}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
             tools:listitem="@layout/item_row_now_playing">
 
         </androidx.recyclerview.widget.RecyclerView>

@@ -9,12 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentTopRatedBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.toprated.adapters.TopRatedAdapter
 import com.example.moviesapp.util.PopUps
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,7 +32,6 @@ class TopRatedFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -50,19 +47,14 @@ class TopRatedFragment : Fragment() {
             if (it.isNotEmpty()) {
                 adapter.submitList(it)
             } else {
-                viewModel.getTopRated()
+                updateOperation()
             }
         }
-
-        viewModel.listTopRated
-            .asLiveData()
-            .observe(viewLifecycleOwner) {
-                adapter.submitList(it)
-            }
 
         viewModel.isLoading
             .asLiveData()
             .observe(viewLifecycleOwner) {
+                binding.swipeRefreshLayout.isRefreshing = it
                 if (it) {
                     progressBar.show()
                 } else {
@@ -118,11 +110,22 @@ class TopRatedFragment : Fragment() {
                 }
             }
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            updateOperation()
+        }
+    }
+
+    private fun updateOperation() {
+        viewModel.getTopRated()
+        viewModel.listTopRated
+            .asLiveData()
+            .observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }
     }
 
     private val adapter by lazy {
         TopRatedAdapter().also {
-            binding.rvTopRated.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rvTopRated.adapter = it
         }
     }

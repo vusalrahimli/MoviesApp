@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentNowPlayingBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.nowplaying.adapters.NowPlayingAdapter
@@ -33,7 +32,6 @@ class NowPlayingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -42,6 +40,27 @@ class NowPlayingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         subscribeToObservables()
         setClicks()
+    }
+
+    private fun subscribeToObservables() {
+        viewModel.getLocalList().observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                adapter.submitList(it)
+            } else {
+                updateOperation()
+            }
+        }
+
+        viewModel.isLoading
+            .asLiveData()
+            .observe(viewLifecycleOwner) {
+                binding.swipeRefreshLayout.isRefreshing = it
+                if (it) {
+                    progressBar.show()
+                } else {
+                    progressBar.dismiss()
+                }
+            }
     }
 
     private fun setClicks() {
@@ -91,37 +110,23 @@ class NowPlayingFragment : Fragment() {
                 }
             }
         }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            updateOperation()
+        }
     }
 
-    private fun subscribeToObservables() {
-        viewModel.getLocalList().observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                adapter.submitList(it)
-            } else {
-                viewModel.getNowPlaying()
-            }
-        }
-
+    private fun updateOperation() {
+        viewModel.getNowPlaying()
         viewModel.listNowPlaying
             .asLiveData()
             .observe(viewLifecycleOwner) {
                 adapter.submitList(it)
             }
-
-        viewModel.isLoading
-            .asLiveData()
-            .observe(viewLifecycleOwner) {
-                if (it) {
-                    progressBar.show()
-                } else {
-                    progressBar.dismiss()
-                }
-            }
     }
 
     private val adapter by lazy {
         NowPlayingAdapter().also {
-            binding.rv.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rv.adapter = it
         }
     }

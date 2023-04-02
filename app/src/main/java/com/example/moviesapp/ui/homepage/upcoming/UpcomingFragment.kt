@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviesapp.databinding.FragmentUpcomingBinding
 import com.example.moviesapp.ui.homepage.HomePageFragmentDirections
 import com.example.moviesapp.ui.homepage.upcoming.adapters.UpcomingAdapter
@@ -33,7 +32,6 @@ class UpcomingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -49,19 +47,14 @@ class UpcomingFragment : Fragment() {
             if (it.isNotEmpty()) {
                 adapter.submitList(it)
             } else {
-                viewModel.getUpcoming()
+                updateOperation()
             }
         }
-
-        viewModel.listUpcoming
-            .asLiveData()
-            .observe(viewLifecycleOwner) {
-                adapter.submitList(it)
-            }
 
         viewModel.isLoading
             .asLiveData()
             .observe(viewLifecycleOwner) {
+                binding.swipeRefreshLayout.isRefreshing = it
                 if (it) {
                     progressBar.show()
                 } else {
@@ -117,11 +110,22 @@ class UpcomingFragment : Fragment() {
                 }
             }
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            updateOperation()
+        }
+    }
+
+    private fun updateOperation() {
+        viewModel.getUpcoming()
+        viewModel.listUpcoming
+            .asLiveData()
+            .observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }
     }
 
     private val adapter by lazy {
         UpcomingAdapter().also {
-            binding.rvUpcoming.layoutManager = GridLayoutManager(requireContext(), 2)
             binding.rvUpcoming.adapter = it
         }
     }

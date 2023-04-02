@@ -237,9 +237,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </FrameLayout>
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

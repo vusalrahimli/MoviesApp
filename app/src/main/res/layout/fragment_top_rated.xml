@@ -3,30 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.example.moviesapp.ui.homepage.toprated.TopRatedVM" />
-
-    </data>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:onRefreshListener="@{() -> viewModel.getTopRated()}"
-        app:refreshing="@{viewModel.isLoading}">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTopRated"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:equalSpacing="@{10}"
             android:clipToPadding="false"
             android:fitsSystemWindows="true"
             android:overScrollMode="never"
             android:splitMotionEvents="false"
+            app:equalSpacing="@{10}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
             tools:listitem="@layout/item_row_top_rated">
 
         </androidx.recyclerview.widget.RecyclerView>

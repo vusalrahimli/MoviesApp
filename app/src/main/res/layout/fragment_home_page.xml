@@ -17,7 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="What do you want to watch?"
+            app:title="@string/title"
             app:titleMargin="20dp"
             app:titleTextAppearance="@style/PoppinsRegular1"
             app:titleTextColor="@color/white" />
